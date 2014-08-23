@@ -12,15 +12,18 @@ makeCacheMatrix <- function(x = matrix()) {
 	#	List with accessor functions for the matrix and inverse
 
 	i <- NULL
+
 	set <- function(y) {
 		x <<- y
 		i <<- NULL
 	}
+
 	get <- function() x
-	setinverse <- function(inverse) {
-        i <<- inverse
-	}
+
+	setinverse <- function(inverse) i <<- inverse
+	
 	getinverse <- function() i
+
 	list(set = set, get = get,
 		setinverse = setinverse,
 		getinverse = getinverse)
@@ -29,11 +32,11 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 cacheSolve <- function(x, ...) {
-	# Returns the inverse of a matrix. Uses cached result if already calculated
+	# Returns the inverse of a matrix. Uses cached result if available
 	#
 	# Args:
 	#	x:   the matrix
-	#	...  optional arugumenents for the 'solve' function
+	#	...  optional aruguments for the 'solve' function
 	#
 	# Returns:
 	#	Inverted matrix
